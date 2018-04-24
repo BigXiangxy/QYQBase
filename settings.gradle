@@ -1,1 +1,1 @@
-include ':app', ':baseLib', ':weex_sdk_16-release'
+include ':app', ':baseLib'

@@ -30,5 +30,5 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile project(':weex_sdk_16-release')
+    compile 'com.github.BigXiangxy:weexSDK16Project:1.0'
 }
