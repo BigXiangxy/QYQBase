@@ -2,7 +2,6 @@ package com.base.library;
 
 import android.content.Context;
 import android.media.MediaRecorder;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.text.format.Time;
@@ -106,7 +105,7 @@ public class VoiceRecorder {
             recorder.setAudioChannels(1); // MONO
             recorder.setAudioSamplingRate(8000); // 8000Hz
             recorder.setAudioEncodingBitRate(64); // seems if change this to
-            voiceFilePath = getFileName();
+            voiceFilePath = getFileName(appContext);
             recorder.setOutputFile(voiceFilePath);
             recorder.prepare();
             isRecording = true;
@@ -157,9 +156,10 @@ public class VoiceRecorder {
         handler.sendMessage(msg);
     }
 
-    private String getFileName() {
+    private String getFileName(Context context) {
         String voiceFileName = getVoiceFileName(new Date().getTime() + "");
-        voiceFilePath = Environment.getExternalStorageDirectory() + "/" + voiceFileName;
+//        voiceFilePath = Environment.getExternalStorageDirectory() + "/" + voiceFileName;
+        voiceFilePath = context.getFilesDir().getAbsolutePath() + File.separator + "voice" + File.separator + voiceFileName;
         File file = new File(voiceFilePath);
         return file.getAbsolutePath();
     }
